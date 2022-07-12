@@ -1,0 +1,63 @@
+.record {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0rem 2rem;
+  box-shadow: 0px 5px 3px rgb(182, 182, 182);
+  border-radius: 7rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.link {
+  flex-grow: 1;
+  padding: 1rem 0rem;
+  /* margin-right: -1rem; */
+}
+
+.record:hover {
+  box-shadow: 0px 6px 4px rgb(182, 182, 182);
+  padding: 2px 2rem;
+}
+
+.title {
+  font-weight: bold;
+  color: rgb(63, 63, 63);
+  font-size: 1.1rem;
+}
+
+.time {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: rgb(117, 117, 117);
+}
+
+.icons {
+  color: rgb(124, 124, 124);
+  font-size: 1.3rem;
+  z-index: 5000;
+}
+
+.star {
+  margin-right: 1rem;
+  transition: color 0.2s;
+}
+
+.active {
+  color: orange;
+}
+
+.star:hover {
+  color: orange;
+}
+
+.trash {
+  transition: color 0.2s;
+}
+
+.trash:hover {
+  color: red;
+}

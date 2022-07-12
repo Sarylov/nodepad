@@ -1,0 +1,12 @@
+.btn {
+  display: block;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-family: "Mulish";
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: capitalize;
+  transition: all 0.3s;
+}

@@ -1,0 +1,23 @@
+.info {
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  max-width: 20rem;
+}
+
+@keyframes attenuation {
+  0% {
+    top: -100%;
+  }
+
+  25% {
+    top: 2rem;
+  }
+  75% {
+    top: 2rem;
+  }
+
+  100% {
+    top: -100%;
+  }
+}

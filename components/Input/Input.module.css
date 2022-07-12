@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  border-radius: 1rem;
+  border: 1px solid gray;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+.form input:focus {
+  border-color: rgb(39, 39, 39);
+  outline: none;
+}

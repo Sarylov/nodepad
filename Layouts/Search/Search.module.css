@@ -1,0 +1,13 @@
+.searchWrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.item1 {
+  flex-grow: 1;
+}
+
+.item2 {
+  margin-left: 1rem;
+}
