@@ -37,41 +37,39 @@ export default function Home({ records }) {
 
   const router = useRouter();
 
-  console.log(records);
+  // // взависимости от времени формирует приветствующее сообщение
+  // const createWalcomeMessage = () => {
+  //   const now = moment().format("YYYY-MM-DDTHH:mm:ssZ");
+  //   let res = "";
+  //   if (!localStorage.getItem("lastSession"))
+  //     res = "приветсвую! Можешь записывать и хранить все что угодно 😁";
+  //   else {
+  //     let lastSession = moment(localStorage.getItem("lastSession")).format(
+  //       "YYYY-MM-DDTHH:mm:ssZ"
+  //     );
+  //     let duration = moment(now).diff(lastSession, "hours");
+  //     if (duration > 4 && duration < 6) res = goodTimeDay();
+  //     else if (duration > 6) res = "с возвращением 😊!";
+  //   }
+  //   localStorage.setItem("lastSession", now);
+  //   return res;
+  // };
 
-  // взависимости от времени формирует приветствующее сообщение
-  const createWalcomeMessage = () => {
-    const now = moment().format("YYYY-MM-DDTHH:mm:ssZ");
-    let res = "";
-    if (!localStorage.getItem("lastSession"))
-      res = "приветсвую! Можешь записывать и хранить все что угодно 😁";
-    else {
-      let lastSession = moment(localStorage.getItem("lastSession")).format(
-        "YYYY-MM-DDTHH:mm:ssZ"
-      );
-      let duration = moment(now).diff(lastSession, "hours");
-      if (duration > 4 && duration < 6) res = goodTimeDay();
-      else if (duration > 6) res = "с возвращением 😊!";
-    }
-    localStorage.setItem("lastSession", now);
-    return res;
-  };
+  // useEffect(() => {
+  //   setWalcomeMessage(createWalcomeMessage());
+  // }, []);
 
-  useEffect(() => {
-    setWalcomeMessage(createWalcomeMessage());
-  }, []);
+  // // возвращает пожелание доброго дня/утра/вечера/ночи
+  // const goodTimeDay = () => {
+  //   let now = Number(moment().format("HH"));
+  //   let res = "доброе утро 🌞!";
 
-  // возвращает пожелание доброго дня/утра/вечера/ночи
-  const goodTimeDay = () => {
-    let now = Number(moment().format("HH"));
-    let res = "доброе утро 🌞!";
+  //   if (now > 12 && now < 18) res = "добрый день 😃!";
+  //   else if (now < 21) res = "добрый вечер 🌛!";
+  //   else if (now < 24 || now < 4) res = "не спиться 😴?";
 
-    if (now > 12 && now < 18) res = "добрый день 😃!";
-    else if (now < 21) res = "добрый вечер 🌛!";
-    else if (now < 24 || now < 4) res = "не спиться 😴?";
-
-    return res;
-  };
+  //   return res;
+  // };
 
   // рисует records массива
   const drowListJsx = (arr) => {
