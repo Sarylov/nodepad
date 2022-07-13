@@ -20,9 +20,9 @@ import { useEffect } from "react";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export default function Home({ records }) {
-  const [favoritesArr, setFavoritesArr] = useState([...records[0]]);
-  const [others, setOthers] = useState([...records[1]]);
+export default function Home() {
+  const [favoritesArr, setFavoritesArr] = useState([]);
+  const [others, setOthers] = useState([]);
 
   let allRecords = [...favoritesArr, ...others]; // массив для вывода
 
@@ -37,39 +37,54 @@ export default function Home({ records }) {
 
   const router = useRouter();
 
-  // // взависимости от времени формирует приветствующее сообщение
-  // const createWalcomeMessage = () => {
-  //   const now = moment().format("YYYY-MM-DDTHH:mm:ssZ");
-  //   let res = "";
-  //   if (!localStorage.getItem("lastSession"))
-  //     res = "приветсвую! Можешь записывать и хранить все что угодно 😁";
-  //   else {
-  //     let lastSession = moment(localStorage.getItem("lastSession")).format(
-  //       "YYYY-MM-DDTHH:mm:ssZ"
-  //     );
-  //     let duration = moment(now).diff(lastSession, "hours");
-  //     if (duration > 4 && duration < 6) res = goodTimeDay();
-  //     else if (duration > 6) res = "с возвращением 😊!";
-  //   }
-  //   localStorage.setItem("lastSession", now);
-  //   return res;
-  // };
+  // взависимости от времени формирует приветствующее сообщение
+  const createWalcomeMessage = () => {
+    const now = moment().format("YYYY-MM-DDTHH:mm:ssZ");
+    let res = "";
+    if (!localStorage.getItem("lastSession"))
+      res = "приветсвую! Можешь записывать и хранить все что угодно 😁";
+    else {
+      let lastSession = moment(localStorage.getItem("lastSession")).format(
+        "YYYY-MM-DDTHH:mm:ssZ"
+      );
+      let duration = moment(now).diff(lastSession, "hours");
+      if (duration > 4 && duration < 6) res = goodTimeDay();
+      else if (duration > 6) res = "с возвращением 😊!";
+    }
+    localStorage.setItem("lastSession", now);
+    return res;
+  };
 
-  // useEffect(() => {
-  //   setWalcomeMessage(createWalcomeMessage());
-  // }, []);
+  useEffect(() => {
+    fetchData();
+    setWalcomeMessage(createWalcomeMessage());
+  }, []);
 
-  // // возвращает пожелание доброго дня/утра/вечера/ночи
-  // const goodTimeDay = () => {
-  //   let now = Number(moment().format("HH"));
-  //   let res = "доброе утро 🌞!";
+  const fetchData = async () => {
+    await axios
+      .get(`${process.env.API_ROUTE}/records`)
+      .then((res) => {
+        const records = res.data;
 
-  //   if (now > 12 && now < 18) res = "добрый день 😃!";
-  //   else if (now < 21) res = "добрый вечер 🌛!";
-  //   else if (now < 24 || now < 4) res = "не спиться 😴?";
+        setFavoritesArr([...records[0]]);
+        setOthers([...records[1]]);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
-  //   return res;
-  // };
+  // возвращает пожелание доброго дня/утра/вечера/ночи
+  const goodTimeDay = () => {
+    let now = Number(moment().format("HH"));
+    let res = "доброе утро 🌞!";
+
+    if (now > 12 && now < 18) res = "добрый день 😃!";
+    else if (now < 21) res = "добрый вечер 🌛!";
+    else if (now < 24 || now < 4) res = "не спиться 😴?";
+
+    return res;
+  };
 
   // рисует records массива
   const drowListJsx = (arr) => {
@@ -256,11 +271,11 @@ export default function Home({ records }) {
   );
 }
 
-// получаем все записи с БД
-export async function getStaticProps({ req }) {
-  const res = await fetch(`${process.env.API_ROUTE}/records`);
-  const records = await res.json();
-  return {
-    props: { records },
-  };
-}
+// // получаем все записи с БД
+// export async function getStaticProps({ req }) {
+//   const res = await fetch(`${process.env.API_ROUTE}/records`);
+//   const records = await res.json();
+//   return {
+//     props: { records },
+//   };
+// }
