@@ -15,7 +15,7 @@ import Info from "../../components/Info/Info";
 
 export default function Record({ record }) {
   const [isEdited, setIsEdited] = useState(false);
-  const [title, setTitle] = useState(record.title.split(" ").join(""));
+  const [title, setTitle] = useState(record.title);
   const [text, setText] = useState(record.text);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowInfo, setIsShowInfo] = useState(false);
