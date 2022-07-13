@@ -5,7 +5,7 @@ export default function Document() {
     <Html>
       <Head>
         <meta charset="UTF-8" />
-        <title>Todo List</title>
+        <title>Nodepad</title>
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
         <link
           rel="preconnect"
