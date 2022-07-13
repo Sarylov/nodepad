@@ -100,16 +100,18 @@ export default function Home({ records }) {
 
   // изменение стейта при нажатии на поиск
   const btnFind = () => {
-    let text = searchText[0].toLowerCase();
-    let records = [...favoritesArr, ...others];
-    let newSearchArr = [];
-    records.forEach((record) => {
-      let title = record.title.toLowerCase();
-      if (title.indexOf(text) != -1) newSearchArr.push(record);
-    });
-    setIsSearch(true);
-    setSearchArr(newSearchArr);
-    setIsShowBtnBack(true);
+    if (searchText[0] != "") {
+      let text = searchText[0].toLowerCase();
+      let records = [...favoritesArr, ...others];
+      let newSearchArr = [];
+      records.forEach((record) => {
+        let title = record.title.toLowerCase();
+        if (title.indexOf(text) != -1) newSearchArr.push(record);
+      });
+      setIsSearch(true);
+      setSearchArr(newSearchArr);
+      setIsShowBtnBack(true);
+    }
   };
   // вернуть стейт в прежнее состояние после поиска
   const clickBack = () => {

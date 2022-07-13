@@ -10,7 +10,7 @@ export default function Document() {
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
-          crossorigin
+          crossOrigin
         ></link>
         <link
           href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,800;1,200;1,800&display=swap"
