@@ -2,3 +2,10 @@
   margin-bottom: 2rem;
   width: 100%;
 }
+
+.wrapperPrealoader {
+  display: flex;
+  justify-content: center;
+  height: 10rem;
+  align-items: center;
+}

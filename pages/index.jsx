@@ -4,6 +4,7 @@ import Record from "../components/Record/Record";
 import Modal from "../components/Modal/Modal";
 import Btn from "../components/Btn/Btn";
 import Info from "../components/Info/Info";
+import Preloader from "../components/Preloader/Preloader";
 
 import MainLayout from "../Layouts/MainLayout/MainLayout";
 import Search from "../Layouts/Search/Search";
@@ -34,8 +35,14 @@ export default function Home() {
   const [isShowBtnBack, setIsShowBtnBack] = useState(false);
   const [searchText, setSearchText] = useState([""]);
   const [walcomeMessage, setWalcomeMessage] = useState(null);
+  const [isPreloader, setIsPreloader] = useState(true);
 
   const router = useRouter();
+
+  useEffect(() => {
+    fetchData();
+    setWalcomeMessage(createWalcomeMessage());
+  }, []);
 
   // взависимости от времени формирует приветствующее сообщение
   const createWalcomeMessage = () => {
@@ -55,19 +62,17 @@ export default function Home() {
     return res;
   };
 
-  useEffect(() => {
-    fetchData();
-    setWalcomeMessage(createWalcomeMessage());
-  }, []);
-
+  // получение данных с сервера
   const fetchData = async () => {
     await axios
       .get(`${process.env.API_ROUTE}/records`)
       .then((res) => {
         const records = res.data;
-
         setFavoritesArr([...records[0]]);
         setOthers([...records[1]]);
+        setTimeout(() => {
+          setIsPreloader(false);
+        }, 500);
       })
       .catch((e) => {
         console.log(e);
@@ -89,7 +94,7 @@ export default function Home() {
   // рисует records массива
   const drowListJsx = (arr) => {
     let res = [
-      <p style={{ textAlign: "center" }}>
+      <p key={1} style={{ textAlign: "center" }}>
         {isSearch
           ? "нет ни одного совпадения"
           : "здесь будут отображаться ваши записи"}
@@ -263,19 +268,15 @@ export default function Home() {
             </Btn>
           )}
 
-          {/* выводим массив allRecords */}
-          {drowListJsx(isSearch ? searchArr : allRecords)}
+          {isPreloader ? (
+            <div className={styles.wrapperPrealoader}>
+              <Preloader color="#178CBE" />
+            </div>
+          ) : (
+            drowListJsx(isSearch ? searchArr : allRecords)
+          )}
         </ContentWrapper>
       </div>
     </MainLayout>
   );
 }
-
-// // получаем все записи с БД
-// export async function getStaticProps({ req }) {
-//   const res = await fetch(`${process.env.API_ROUTE}/records`);
-//   const records = await res.json();
-//   return {
-//     props: { records },
-//   };
-// }
