@@ -37,6 +37,8 @@ export default function Home({ records }) {
 
   const router = useRouter();
 
+  console.log(records);
+
   // взависимости от времени формирует приветствующее сообщение
   const createWalcomeMessage = () => {
     const now = moment().format("YYYY-MM-DDTHH:mm:ssZ");
