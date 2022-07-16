@@ -1,5 +1,5 @@
 Блокнот на NextJs.
-api: [https://github.com/Sarylov/nodepadapi](Sarylov/nodepadapi)
+api: [https://github.com/Sarylov/nodepadapi]
 посмотреть рузултат: [https://nodepad.vercel.app/]
 
 ## Скачать и запустить
@@ -16,7 +16,7 @@ npm i
 npm run dev
 ```
 
-после этого откройте ссылку [http://localhost:3000](http://localhost:3000)
+после этого откройте ссылку [http://localhost:3000]
 
 ## Сайт портфолио
 
