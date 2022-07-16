@@ -1,6 +1,6 @@
 Блокнот на NextJs.
 api: [https://github.com/Sarylov/nodepadapi](Sarylov/nodepadapi)
-посмотреть рузултат: [https://nodepad.vercel.app/](nodepad)
+посмотреть рузултат: [https://nodepad.vercel.app/]
 
 ## Скачать и запустить
 
