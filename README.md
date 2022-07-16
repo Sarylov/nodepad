@@ -20,4 +20,4 @@ npm run dev
 
 ## Сайт портфолио
 
-[https://sarylov.github.io/Portfolio/](сайт портфолио с другими проектами)
+[https://sarylov.github.io/Portfolio/](сайт)
